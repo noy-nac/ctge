@@ -1,0 +1,317 @@
+﻿
+using System;
+using System.IO;
+
+namespace Security {
+	public class Lockbox {
+
+		public const string DIR_JOIN = "\\";
+
+		public const string UNLOCK_FILE = "unlock";
+
+		protected Random rand;
+
+		protected string srcdir;
+
+		public const string UNK_NICK =  "NICKNICKNICKNICK";
+		public const ulong UNK_FIG   = 0xF166F166F166F166;
+
+		// display name & ID
+		protected string nick;
+		protected ulong figure;
+
+		//
+
+		public const string UNK_NAME = "NAMENAMENAMENAME";
+		public const string UNK_PASS = "PASSPASSPASSPASS";
+
+		// login credientials
+		protected string name;
+		protected string pass;
+
+		public const ulong UNK_KEY  = 0x18E918E918E918E9;
+		public const ulong UNK_CODE = 0xC0DEC0DEC0DEC0DE;
+
+		// additional login key
+		protected ulong key;
+		// command login code
+		protected ulong code;
+
+		//
+
+		public const ulong UNK_ID     = 0x1D1D1D1D1D1D1D1D;
+		public const ulong UNK_SERIAL = 0x5E121A105E121A10;
+
+		// official link ID 
+		protected ulong id; 
+		// sequencial ID
+		protected ulong serial;
+
+		public const ulong UNK_SALT  = 0x5A175A175A175A17;
+		public const ulong UNK_TOKEN = 0x7018E1617018E161;
+
+		// random hash addition
+		protected ulong salt;
+		// temporary authorization
+		protected ulong lasttoken;
+
+		//
+
+		public const ulong FRONT_FILTER = 0x000FFFFFFFFFFFFF;
+		public const ulong END_FILTER   = 0xFFFFFFFFFFFFF000;
+		public const ulong DUAL_FILTER  = 0x000FFFFFFFFFF000;
+
+		//
+
+		public const byte TO_END_SHF = (16 - 3) * 4;
+
+		// require front filter
+
+		public const ulong CODE_TKN   = 0xCDE0000000000000;
+		public const ulong ERR_TKN    = 0xBAD0000000000000;
+		public const ulong PREP_TKN   = 0x9E90000000000000;
+
+		public const ulong REQ_TKN    = 0x6E70000000000000;
+		public const ulong UNL_TKN    = 0xC1C0000000000000;
+		public const ulong VERIF_TKN  = 0x5EF0000000000000;
+		public const ulong OPEN_TKN   = 0x1F70000000000000;
+		public const ulong LOAD_TKN   = 0x1AD0000000000000;
+		public const ulong ACCESS_TKN = 0xACE0000000000000;
+
+		public const ulong ACT_TKN    = 0xAC70000000000000;
+
+		//
+
+		// require dual filter
+
+		public const ulong CODE_FRZ_TKN    = CODE_TKN | 0x0000000000000C1D;
+		public const ulong CODE_PURGE_TKN  = CODE_TKN | 0x000000000000096E;
+
+		public const ulong FAIL_REQ_TKN    = ERR_TKN  | (REQ_TKN    >> TO_END_SHF);
+		public const ulong FAIL_UNL_TKN    = ERR_TKN  | (UNL_TKN    >> TO_END_SHF);
+		public const ulong FAIL_VERIF_TKN  = ERR_TKN  | (VERIF_TKN  >> TO_END_SHF);
+		public const ulong FAIL_OPEN_TKN   = ERR_TKN  | (OPEN_TKN   >> TO_END_SHF);
+		public const ulong FAIL_LOAD_TKN   = ERR_TKN  | (LOAD_TKN   >> TO_END_SHF);
+		public const ulong FAIL_ACCESS_TKN = ERR_TKN  | (ACCESS_TKN >> TO_END_SHF);
+
+		public const ulong FAIL_ACT_TKN    = ERR_TKN  | (ACT_TKN    >> TO_END_SHF);
+
+		public const ulong PREP_REQ_TKN    = PREP_TKN | (REQ_TKN    >> TO_END_SHF);
+		public const ulong PREP_UNL_TKN    = PREP_TKN | (UNL_TKN    >> TO_END_SHF);
+		public const ulong PREP_VERIF_TKN  = PREP_TKN | (VERIF_TKN  >> TO_END_SHF);
+		public const ulong PREP_OPEN_TKN   = PREP_TKN | (OPEN_TKN   >> TO_END_SHF);
+		public const ulong PREP_LOAD_TKN   = PREP_TKN | (LOAD_TKN   >> TO_END_SHF);
+		public const ulong PREP_ACCESS_TKN = PREP_TKN | (ACCESS_TKN >> TO_END_SHF);
+
+		public const ulong PREP_ACT_TKN    = PREP_TKN | (ACT_TKN    >> TO_END_SHF);
+
+		//
+
+		public string Sobriquet {
+			get { return nick; }
+		}
+
+		public ulong Figure {
+			get { return figure; }
+		}
+
+		//
+
+		public Lockbox(string srcdir) {
+			rand = new Random();
+
+			this.srcdir = srcdir;
+
+			Initalize();
+		}
+
+		public void Initalize() {
+			nick = UNK_NICK;
+			figure = UNK_FIG;
+
+			name = UNK_NAME;
+			pass = UNK_PASS;
+
+			key = UNK_KEY;
+			code = UNK_CODE;
+
+			id = UNK_ID;
+			serial = UNK_SERIAL;
+
+			salt = UNK_SALT;
+			lasttoken = UNK_TOKEN;
+		}
+
+		//
+
+		public ulong StartLogin() {
+			return NewToken(DUAL_FILTER, PREP_REQ_TKN);
+		}
+
+		//
+
+		public enum Action : byte {
+			Request,
+			Unlock,
+			Verify,
+			Open,
+			Load,
+			Access,
+			Do,
+		}
+
+		// before calling any of the specific functions, call Prep(Action, token)
+		public ulong Prep(Action act, ulong token = UNK_TOKEN) {
+			switch(act) {
+				case Action.Request:
+					if(lasttoken == token && (token & PREP_REQ_TKN) == PREP_REQ_TKN) {
+						return NewToken(FRONT_FILTER, REQ_TKN);
+					}
+					else {
+						return NewToken(DUAL_FILTER, FAIL_REQ_TKN);
+					}
+				case Action.Unlock:
+					if(lasttoken == token && (token & PREP_UNL_TKN) == PREP_UNL_TKN) {
+						return NewToken(FRONT_FILTER, UNL_TKN);
+					}
+					else {
+						return NewToken(DUAL_FILTER, FAIL_UNL_TKN);
+					}
+				case Action.Verify:
+					if(lasttoken == token && (token & PREP_VERIF_TKN) == PREP_VERIF_TKN) {
+						return NewToken(FRONT_FILTER, VERIF_TKN);
+					}
+					else {
+						return NewToken(DUAL_FILTER, FAIL_VERIF_TKN);
+					}
+				case Action.Open:
+					if(lasttoken == token && (token & PREP_OPEN_TKN) == PREP_OPEN_TKN) {
+						return NewToken(FRONT_FILTER, OPEN_TKN);
+					}
+					else {
+						return NewToken(DUAL_FILTER, FAIL_OPEN_TKN);
+					}
+				case Action.Load:
+					if(lasttoken == token && (token & PREP_LOAD_TKN) == PREP_LOAD_TKN) {
+						return NewToken(FRONT_FILTER, LOAD_TKN);
+					}
+					else {
+						return NewToken(DUAL_FILTER, FAIL_LOAD_TKN);
+					}
+				case Action.Access:
+					if(lasttoken == token && (token & PREP_ACCESS_TKN) == PREP_ACCESS_TKN) {
+						return NewToken(FRONT_FILTER, ACCESS_TKN);
+					}
+					else {
+						return NewToken(DUAL_FILTER, FAIL_ACCESS_TKN);
+					}
+				case Action.Do:
+					if(lasttoken == token && (token & PREP_ACT_TKN) == PREP_ACT_TKN) {
+						return NewToken(FRONT_FILTER, ACT_TKN);
+					}
+					else {
+						return NewToken(DUAL_FILTER, FAIL_ACT_TKN);
+					}
+				default:
+					return NewToken(FRONT_FILTER, ERR_TKN);
+			}
+		}
+
+		public ulong Request(ulong id, ulong token) {
+			if(lasttoken == token && (token & REQ_TKN) == REQ_TKN && (token & ERR_TKN) != ERR_TKN) {
+				//
+				return NewToken(DUAL_FILTER, PREP_UNL_TKN);
+			}
+			else {
+				return NewToken(DUAL_FILTER, FAIL_REQ_TKN);
+			}
+		}
+
+		public ulong Unlock(string name, string pass, ulong token) {
+			if(lasttoken == token && (token & UNL_TKN) == UNL_TKN && (token & ERR_TKN) != ERR_TKN) {
+				//
+				return NewToken(DUAL_FILTER, PREP_VERIF_TKN);
+			}
+			else {
+				return NewToken(DUAL_FILTER, FAIL_UNL_TKN);
+			}
+		}
+
+		public ulong Verify(ulong key, ulong token) {
+			if(lasttoken == token && (token & VERIF_TKN) == VERIF_TKN && (token & ERR_TKN) != ERR_TKN) {
+				//
+				return NewToken(DUAL_FILTER, PREP_OPEN_TKN);
+			}
+			else {
+				return NewToken(DUAL_FILTER, FAIL_VERIF_TKN);
+			}
+		}
+
+		public ulong Open(ulong code, ulong token) {
+			if(lasttoken == token && (token & OPEN_TKN) == OPEN_TKN && (token & ERR_TKN) != ERR_TKN) {
+				//
+				return NewToken(DUAL_FILTER, PREP_LOAD_TKN);
+			}
+			else {
+				return NewToken(DUAL_FILTER, FAIL_OPEN_TKN);
+			}
+		}
+
+		public ulong Load(ulong token) {
+			if(lasttoken == token && (token & LOAD_TKN) == LOAD_TKN && (token & ERR_TKN) != ERR_TKN) {
+				//
+				return NewToken(DUAL_FILTER, PREP_ACCESS_TKN);
+			}
+			else {
+				return NewToken(DUAL_FILTER, FAIL_LOAD_TKN);
+			}
+		}
+
+		public ulong Access(ulong id, string name, string pass, ulong key, ulong token) {
+			if(lasttoken == token && (token & ACCESS_TKN) == ACCESS_TKN && (token & ERR_TKN) != ERR_TKN) {
+				//
+				return NewToken(DUAL_FILTER, PREP_ACT_TKN);
+			}
+			else {
+				return NewToken(DUAL_FILTER, FAIL_ACCESS_TKN);
+			}
+		}
+
+		public ulong Do(ulong token) {
+			if(lasttoken == token && (token & ACT_TKN) == ACT_TKN && (token & ERR_TKN) != ERR_TKN) {
+				//
+				return NewToken(DUAL_FILTER, ACT_TKN);
+			}
+			else {
+				return NewToken(DUAL_FILTER, FAIL_ACT_TKN);
+			}
+		}
+
+		//
+
+		public const ushort TOKEN_GEN_UNIT = 256;
+
+		public const ushort TOKEN_GEN_MIN = 0;
+		public const ushort TOKEN_GEN_MAX = TOKEN_GEN_MIN + TOKEN_GEN_UNIT;
+
+		private ulong NewToken(ulong filter, ulong mark) {
+			ulong token = 0;
+
+			for(byte i = 0; i < 8; i++) {
+				token |= (ushort)rand.Next(TOKEN_GEN_MIN, TOKEN_GEN_MAX);
+				token <<= 8;
+			}
+			token |= (ushort)rand.Next(TOKEN_GEN_MIN, TOKEN_GEN_MAX);
+
+			token = (token & filter) | mark;
+
+			lasttoken = (lasttoken == UNK_TOKEN ? token : NextToken(lasttoken, token));
+
+			return token;
+		}
+
+		public static ulong NextToken(ulong last, ulong next) {
+			return ((last ^ next) & DUAL_FILTER) | (next & ~DUAL_FILTER);
+		}
+	}
+}
