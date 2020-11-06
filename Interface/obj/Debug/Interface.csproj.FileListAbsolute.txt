@@ -1,0 +1,15 @@
+D:\Users\noy-nac\Documents\Company\Development\Programming\C#\CTGE\Interface\bin\Debug\Interface.dll
+D:\Users\noy-nac\Documents\Company\Development\Programming\C#\CTGE\Interface\bin\Debug\Interface.pdb
+D:\Users\noy-nac\Documents\Company\Development\Programming\C#\CTGE\Interface\obj\Debug\Interface.csproj.CoreCompileInputs.cache
+D:\Users\noy-nac\Documents\Company\Development\Programming\C#\CTGE\Interface\obj\Debug\Interface.dll
+D:\Users\noy-nac\Documents\Company\Development\Programming\C#\CTGE\Interface\obj\Debug\Interface.pdb
+D:\Users\noy-nac\Documents\Company\Development\Programming\C#\CTGE\Interface\bin\Debug\Core.dll
+D:\Users\noy-nac\Documents\Company\Development\Programming\C#\CTGE\Interface\bin\Debug\Engine.dll
+D:\Users\noy-nac\Documents\Company\Development\Programming\C#\CTGE\Interface\bin\Debug\Graphics.dll
+D:\Users\noy-nac\Documents\Company\Development\Programming\C#\CTGE\Interface\bin\Debug\Security.dll
+D:\Users\noy-nac\Documents\Company\Development\Programming\C#\CTGE\Interface\bin\Debug\Core.pdb
+D:\Users\noy-nac\Documents\Company\Development\Programming\C#\CTGE\Interface\bin\Debug\Engine.pdb
+D:\Users\noy-nac\Documents\Company\Development\Programming\C#\CTGE\Interface\bin\Debug\Graphics.pdb
+D:\Users\noy-nac\Documents\Company\Development\Programming\C#\CTGE\Interface\bin\Debug\Security.pdb
+D:\Users\noy-nac\Documents\Company\Development\Programming\C#\CTGE\Interface\obj\Debug\Interface.csproj.CopyComplete
+D:\Users\noy-nac\Documents\Company\Development\Programming\C#\CTGE\Interface\obj\Debug\Interface.csprojAssemblyReference.cache

@@ -1,0 +1,6 @@
+D:\Users\noy-nac\Documents\Company\Development\Programming\C#\CTGE\Security\bin\Debug\Security.dll
+D:\Users\noy-nac\Documents\Company\Development\Programming\C#\CTGE\Security\bin\Debug\Security.pdb
+D:\Users\noy-nac\Documents\Company\Development\Programming\C#\CTGE\Security\obj\Debug\Security.csproj.CoreCompileInputs.cache
+D:\Users\noy-nac\Documents\Company\Development\Programming\C#\CTGE\Security\obj\Debug\Security.dll
+D:\Users\noy-nac\Documents\Company\Development\Programming\C#\CTGE\Security\obj\Debug\Security.pdb
+D:\Users\noy-nac\Documents\Company\Development\Programming\C#\CTGE\Security\obj\Debug\Security.csprojAssemblyReference.cache

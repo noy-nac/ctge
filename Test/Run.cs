@@ -1,0 +1,159 @@
+﻿using System;
+
+using Core;
+
+using Graphics.Coloring;
+using Graphics.Raster;
+using Graphics.Raster.Rendering;
+using Graphics.Raster.Text;
+using Graphics.Tracking;
+using Graphics.Vector;
+using Graphics.Vector.Geometry;
+using Graphics.Vector.Geometry.Enclosed;
+
+using Security;
+
+using Interface.Content;
+
+using System.Drawing;
+
+namespace Test {
+	public class Run {
+
+		public static void Main(string[] args) {
+			//Ball();
+
+			Console.ResetColor();
+
+			Bitmap isl = new Bitmap("frac.png");
+
+			Sprite s = new Sprite(new Box((ushort)isl.Width, (ushort)isl.Height, new Point2D(1, 1)));
+
+			for(ushort y = 0; y < s.Height; y++) {
+				for(ushort x = 0; x < s.Width; x++) {
+					s[x, y] = new Chixel(new Graphics.Coloring.Color((uint)isl.GetPixel(x, y).ToArgb()));
+				}
+			}
+
+
+
+			s.Render(Sprite.RenderOption.Default);
+
+
+			Console.CursorVisible = false;
+
+			//Console.Title = "\"An 8-bit Adventure RPG\"";
+
+			Console.ReadLine();
+			Console.ResetColor();
+		}
+
+
+		public static void Ball() {
+
+			Random rand = new Random();
+
+			Console.Title = "Test";
+
+			Console.CursorVisible = false;
+
+			Console.ResetColor();
+
+			Console.BackgroundColor = ConsoleColor.Black;
+
+			Bitmap b = new Bitmap("ball.png");
+			Bitmap bb = new Bitmap("frac.png");
+			Bitmap bg = new Bitmap("ball.png");
+
+			Sprite s = new Sprite(new Box((ushort)b.Width, (ushort)b.Height, new Point2D(80, 40)));
+			Sprite ss = new Sprite(new Box((ushort)bb.Width, (ushort)bb.Height, new Point2D(0, 0)));
+			Sprite ii = new Sprite(new Box((ushort)bg.Width, (ushort)bg.Height, new Point2D(4, 44)));
+
+			for(ushort y = 0; y < s.Height; y++) {
+				for(ushort x = 0; x < s.Width; x++) {
+					s[x, y] = new Chixel(new Graphics.Coloring.Color((uint)b.GetPixel(x, y).ToArgb()));
+				}
+			}
+			for(ushort y = 0; y < ss.Height; y++) {
+				for(ushort x = 0; x < ss.Width; x++) {
+					ss[x, y] = new Chixel(new Graphics.Coloring.Color((uint)bb.GetPixel(x, y).ToArgb()));
+				}
+			}
+			for(ushort y = 0; y < ii.Height; y++) {
+				for(ushort x = 0; x < ii.Width; x++) {
+					ii[x, y] = new Chixel(new Graphics.Coloring.Color((uint)bg.GetPixel(x, y).ToArgb()));
+				}
+			}
+
+			//ii.LoadXYMaps(Sprite.RenderMode.Random);
+
+			for(byte i = 0; true; i++) {
+
+				ii.Move(new Point2D(70, -40), Sprite.RenderOption.Record, Sprite.FillMode.YX_IV);
+				ii.Rebox();
+				ii.Move(new Point2D(70, 40), Sprite.RenderOption.Record, Sprite.FillMode.YX_I);
+				ii.Rebox();
+
+				ii.Move(new Point2D(-70, 40), Sprite.RenderOption.Record, Sprite.FillMode.YX_II);
+				ii.Rebox();
+				ii.Move(new Point2D(-70, -40), Sprite.RenderOption.Record, Sprite.FillMode.YX_III);
+				ii.Rebox();
+
+				ii.Move(new Point2D(20, 0), Sprite.RenderOption.Record, Sprite.FillMode.YX_I);
+				ii.Rebox();
+
+				ii.Move(new Point2D(20, -40), Sprite.RenderOption.Record, Sprite.FillMode.XY_IV);
+				ii.Rebox();
+				ii.Move(new Point2D(20, 40), Sprite.RenderOption.Record, Sprite.FillMode.XY_I);
+				ii.Rebox();
+
+				ii.Move(new Point2D(23, 0), Sprite.RenderOption.Record, Sprite.FillMode.YX_I);
+				ii.Rebox();
+
+				ii.Move(new Point2D(20, -40), Sprite.RenderOption.Record, Sprite.FillMode.XY_IV);
+				ii.Rebox();
+				ii.Move(new Point2D(20, 40), Sprite.RenderOption.Record, Sprite.FillMode.XY_I);
+				ii.Rebox();
+
+				ii.Move(new Point2D(20, 0), Sprite.RenderOption.Record, Sprite.FillMode.YX_I);
+				ii.Rebox();
+
+				ii.Move(new Point2D(-20, 0), Sprite.RenderOption.Record, Sprite.FillMode.YX_III);
+				ii.Rebox();
+
+				ii.Move(new Point2D(-20, 40), Sprite.RenderOption.Record, Sprite.FillMode.XY_II);
+				ii.Rebox();
+				ii.Move(new Point2D(-20, -40), Sprite.RenderOption.Record, Sprite.FillMode.XY_III);
+				ii.Rebox();
+
+				ii.Move(new Point2D(-23, 0), Sprite.RenderOption.Record, Sprite.FillMode.YX_III);
+				ii.Rebox();
+
+				ii.Move(new Point2D(-20, 40), Sprite.RenderOption.Record, Sprite.FillMode.XY_II);
+				ii.Rebox();
+				ii.Move(new Point2D(-20, -40), Sprite.RenderOption.Record, Sprite.FillMode.XY_III);
+				ii.Rebox();
+
+				ii.Move(new Point2D(-20, 0), Sprite.RenderOption.Record, Sprite.FillMode.YX_III);
+				ii.Rebox();
+			}
+			/*Console.Clear();
+			ii.Render(Sprite.RenderOption.None, Sprite.RenderMode.Random_YX_I);
+			Console.Clear();
+			ii.Render(Sprite.RenderOption.None, Sprite.RenderMode.Random_XY_II);
+			Console.Clear();
+			ii.Render(Sprite.RenderOption.None, Sprite.RenderMode.Random_YX_II);
+			Console.Clear();
+			ii.Render(Sprite.RenderOption.None, Sprite.RenderMode.Random_XY_III);
+			Console.Clear();
+			ii.Render(Sprite.RenderOption.None, Sprite.RenderMode.Random_YX_III);
+			Console.Clear();
+			ii.Render(Sprite.RenderOption.None, Sprite.RenderMode.Random_XY_IV);
+			Console.Clear();
+			ii.Render(Sprite.RenderOption.None, Sprite.RenderMode.Random_YX_IV);
+			Console.Clear();*/
+
+			Console.ReadLine();
+		}
+	}
+}

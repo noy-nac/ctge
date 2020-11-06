@@ -1,0 +1,11 @@
+D:\Users\noy-nac\Documents\Company\Development\Programming\C#\CTGE\Graphics\bin\Debug\Graphics.dll
+D:\Users\noy-nac\Documents\Company\Development\Programming\C#\CTGE\Graphics\bin\Debug\Graphics.pdb
+D:\Users\noy-nac\Documents\Company\Development\Programming\C#\CTGE\Graphics\obj\Debug\Graphics.csproj.CoreCompileInputs.cache
+D:\Users\noy-nac\Documents\Company\Development\Programming\C#\CTGE\Graphics\obj\Debug\Graphics.dll
+D:\Users\noy-nac\Documents\Company\Development\Programming\C#\CTGE\Graphics\obj\Debug\Graphics.pdb
+D:\Users\noy-nac\Documents\Company\Development\Programming\C#\CTGE\Graphics\bin\Debug\Core.dll
+D:\Users\noy-nac\Documents\Company\Development\Programming\C#\CTGE\Graphics\bin\Debug\Engine.dll
+D:\Users\noy-nac\Documents\Company\Development\Programming\C#\CTGE\Graphics\bin\Debug\Core.pdb
+D:\Users\noy-nac\Documents\Company\Development\Programming\C#\CTGE\Graphics\bin\Debug\Engine.pdb
+D:\Users\noy-nac\Documents\Company\Development\Programming\C#\CTGE\Graphics\obj\Debug\Graphics.csproj.CopyComplete
+D:\Users\noy-nac\Documents\Company\Development\Programming\C#\CTGE\Graphics\obj\Debug\Graphics.csprojAssemblyReference.cache
