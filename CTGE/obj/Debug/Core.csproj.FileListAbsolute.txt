@@ -1,0 +1,5 @@
+C:\Users\Tonny\Documents\company\concilics\development\programming\projects\csharp-vs\CTGE\CTGE\obj\Debug\Core.csprojResolveAssemblyReference.cache
+C:\Users\Tonny\Documents\company\concilics\development\programming\projects\csharp-vs\CTGE\CTGE\bin\Debug\Core.dll
+C:\Users\Tonny\Documents\company\concilics\development\programming\projects\csharp-vs\CTGE\CTGE\bin\Debug\Core.pdb
+C:\Users\Tonny\Documents\company\concilics\development\programming\projects\csharp-vs\CTGE\CTGE\obj\Debug\Core.dll
+C:\Users\Tonny\Documents\company\concilics\development\programming\projects\csharp-vs\CTGE\CTGE\obj\Debug\Core.pdb
