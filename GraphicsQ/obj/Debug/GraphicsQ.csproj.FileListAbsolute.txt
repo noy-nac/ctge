@@ -1,0 +1,10 @@
+C:\Users\Tonny\Documents\company\concilics\development\programming\projects\csharp-vs\CTGE\GraphicsQ\bin\Debug\GraphicsQ.dll
+C:\Users\Tonny\Documents\company\concilics\development\programming\projects\csharp-vs\CTGE\GraphicsQ\bin\Debug\GraphicsQ.pdb
+C:\Users\Tonny\Documents\company\concilics\development\programming\projects\csharp-vs\CTGE\GraphicsQ\obj\Debug\GraphicsQ.csprojResolveAssemblyReference.cache
+C:\Users\Tonny\Documents\company\concilics\development\programming\projects\csharp-vs\CTGE\GraphicsQ\obj\Debug\GraphicsQ.dll
+C:\Users\Tonny\Documents\company\concilics\development\programming\projects\csharp-vs\CTGE\GraphicsQ\obj\Debug\GraphicsQ.pdb
+C:\Users\Tonny\Documents\company\concilics\development\programming\projects\csharp-vs\_CTGE_\GraphicsQ\bin\Debug\GraphicsQ.dll
+C:\Users\Tonny\Documents\company\concilics\development\programming\projects\csharp-vs\_CTGE_\GraphicsQ\bin\Debug\GraphicsQ.pdb
+C:\Users\Tonny\Documents\company\concilics\development\programming\projects\csharp-vs\_CTGE_\GraphicsQ\obj\Debug\GraphicsQ.csprojResolveAssemblyReference.cache
+C:\Users\Tonny\Documents\company\concilics\development\programming\projects\csharp-vs\_CTGE_\GraphicsQ\obj\Debug\GraphicsQ.dll
+C:\Users\Tonny\Documents\company\concilics\development\programming\projects\csharp-vs\_CTGE_\GraphicsQ\obj\Debug\GraphicsQ.pdb

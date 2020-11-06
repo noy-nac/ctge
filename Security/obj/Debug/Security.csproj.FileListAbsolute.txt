@@ -1,0 +1,10 @@
+C:\Users\Tonny\Documents\company\concilics\development\programming\projects\csharp-vs\CTGE\Security\bin\Debug\Security.dll
+C:\Users\Tonny\Documents\company\concilics\development\programming\projects\csharp-vs\CTGE\Security\bin\Debug\Security.pdb
+C:\Users\Tonny\Documents\company\concilics\development\programming\projects\csharp-vs\CTGE\Security\obj\Debug\Security.dll
+C:\Users\Tonny\Documents\company\concilics\development\programming\projects\csharp-vs\CTGE\Security\obj\Debug\Security.pdb
+C:\Users\Tonny\Documents\company\concilics\development\programming\projects\csharp-vs\CTGE\Security\obj\Debug\Security.csprojResolveAssemblyReference.cache
+C:\Users\Tonny\Documents\company\concilics\development\programming\projects\csharp-vs\_CTGE_\Security\bin\Debug\Security.dll
+C:\Users\Tonny\Documents\company\concilics\development\programming\projects\csharp-vs\_CTGE_\Security\bin\Debug\Security.pdb
+C:\Users\Tonny\Documents\company\concilics\development\programming\projects\csharp-vs\_CTGE_\Security\obj\Debug\Security.csprojResolveAssemblyReference.cache
+C:\Users\Tonny\Documents\company\concilics\development\programming\projects\csharp-vs\_CTGE_\Security\obj\Debug\Security.dll
+C:\Users\Tonny\Documents\company\concilics\development\programming\projects\csharp-vs\_CTGE_\Security\obj\Debug\Security.pdb
