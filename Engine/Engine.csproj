@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0F9B0076-1272-4C10-ACF6-AD75C919AE7F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Engine</RootNamespace>
+    <AssemblyName>CTGE</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>false</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Data\Enums\AttributeID.cs" />
+    <Compile Include="Data\Enums\BiomeID.cs" />
+    <Compile Include="Data\Enums\ClassID.cs" />
+    <Compile Include="Data\Enums\PureEmotionID.cs" />
+    <Compile Include="Data\Enums\GenderID.cs" />
+    <Compile Include="Data\Enums\NationID.cs" />
+    <Compile Include="Data\Enums\RaceID.cs" />
+    <Compile Include="Events\Battle.cs" />
+    <Compile Include="Entities\Enemy.cs" />
+    <Compile Include="Game.cs" />
+    <Compile Include="IO\CSV.cs" />
+    <Compile Include="IO\LineFile.cs" />
+    <Compile Include="Entities\Character.cs" />
+    <Compile Include="Entities\Entity.cs" />
+    <Compile Include="Data\Experience.cs" />
+    <Compile Include="Entities\Lifeform.cs" />
+    <Compile Include="Entities\NPC.cs" />
+    <Compile Include="Entities\Player.cs" />
+    <Compile Include="Minigames\CardHand.cs" />
+    <Compile Include="Minigames\Enums\CardSuiteID.cs" />
+    <Compile Include="Minigames\Enums\CardRankID.cs" />
+    <Compile Include="Minigames\Poker.cs" />
+    <Compile Include="Minigames\StandardDeck.cs" />
+    <Compile Include="Utility\Enums\CommandID.cs" />
+    <Compile Include="Utility\LocationChain.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Data\Stats.cs" />
+    <Compile Include="Utility\Terminal.cs" />
+    <None Include="Data\AttributeStats-2016-08-15.cs.old" />
+    <Compile Include="Data\Attributes.cs" />
+    <Compile Include="Data\Structs\Class.cs" />
+    <Compile Include="Data\Structs\Gender.cs" />
+    <Compile Include="Data\Structs\Nation.cs" />
+    <Compile Include="Data\Structs\Race.cs" />
+    <Compile Include="Data\Structs\Biome.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
