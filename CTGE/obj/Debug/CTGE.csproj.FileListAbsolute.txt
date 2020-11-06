@@ -1,0 +1,5 @@
+C:\Users\Tonny\Documents\company\concilics\development\programming\projects\csharp-vs\CTGE\CTGE\bin\Debug\CTGE.dll
+C:\Users\Tonny\Documents\company\concilics\development\programming\projects\csharp-vs\CTGE\CTGE\bin\Debug\CTGE.pdb
+C:\Users\Tonny\Documents\company\concilics\development\programming\projects\csharp-vs\CTGE\CTGE\obj\Debug\CTGE.csprojResolveAssemblyReference.cache
+C:\Users\Tonny\Documents\company\concilics\development\programming\projects\csharp-vs\CTGE\CTGE\obj\Debug\CTGE.dll
+C:\Users\Tonny\Documents\company\concilics\development\programming\projects\csharp-vs\CTGE\CTGE\obj\Debug\CTGE.pdb
